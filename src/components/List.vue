@@ -92,7 +92,7 @@
         name: 'ListPage',
         data () {
             return {
-                baseUrl: process.env.baseURL || "https://todo-list123456.herokuapp.com",
+                baseUrl: process.env.baseURL || "http://localhost:3000",
                 list: [],
                 showModal: false,
                 showModal_business: false,
@@ -105,7 +105,7 @@
         methods: {
             fetchingData: function(){
                 axios
-                .get(`http://localhost:3000/categories`)
+                .get(`${baseUrl}/categories`)
                 .then(response => (this.list = response.data))
                 .catch(err => console.log(err));
             },
@@ -124,7 +124,7 @@
                 this.alert = "Уже имеется!";
               }else{
                 axios
-                .post(`http://localhost:3000/categories`, {name: this.newCategory})
+                .post(`${baseUrl}/categories`, {name: this.newCategory})
                 .then(res => this.fetchingData())
                 .catch(err => console.log(err));
                 this.newCategory = "";
@@ -134,7 +134,7 @@
             },
             deleteCategory: function(categoryName){
                 axios
-                .delete(`http://localhost:3000/categories`,{data: {name : categoryName}})
+                .delete(`${baseUrl}/categories`,{data: {name : categoryName}})
                 .then(res => this.fetchingData())
                 .catch(err => console.log(err));
             },
@@ -143,7 +143,7 @@
                 this.alert = "Не может быть пустым";
               } else {
                 axios
-                .post(`http://localhost:3000/categories/`+categoryName, {name: this.newBusiness, isCompleted: false})
+                .post(`${baseUrl}/categories/`+categoryName, {name: this.newBusiness, isCompleted: false})
                 .then(res => this.fetchingData())
                 .catch(err => console.log(err));
                 this.newBusiness = "";
@@ -153,7 +153,7 @@
             },
             changeStatus: function(id, status){
                 axios
-                .put(`http://localhost:3000/business/`+id,{status: status})
+                .put(`${baseUrl}/business/`+id,{status: status})
                 .then(res => this.fetchingData())
                 .catch(err => console.log(err));
             }
