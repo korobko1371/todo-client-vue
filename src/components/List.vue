@@ -105,7 +105,7 @@
         methods: {
             fetchingData: function(){
                 axios
-                .get(`${baseUrl}/categories`)
+                .get(`${this.baseUrl}/categories`)
                 .then(response => (this.list = response.data))
                 .catch(err => console.log(err));
             },
@@ -124,7 +124,7 @@
                 this.alert = "Уже имеется!";
               }else{
                 axios
-                .post(`${baseUrl}/categories`, {name: this.newCategory})
+                .post(`${this.baseUrl}/categories`, {name: this.newCategory})
                 .then(res => this.fetchingData())
                 .catch(err => console.log(err));
                 this.newCategory = "";
@@ -134,7 +134,7 @@
             },
             deleteCategory: function(categoryName){
                 axios
-                .delete(`${baseUrl}/categories`,{data: {name : categoryName}})
+                .delete(`${this.baseUrl}/categories`,{data: {name : categoryName}})
                 .then(res => this.fetchingData())
                 .catch(err => console.log(err));
             },
@@ -143,7 +143,7 @@
                 this.alert = "Не может быть пустым";
               } else {
                 axios
-                .post(`${baseUrl}/categories/`+categoryName, {name: this.newBusiness, isCompleted: false})
+                .post(`${this.baseUrl}/categories/`+categoryName, {name: this.newBusiness, isCompleted: false})
                 .then(res => this.fetchingData())
                 .catch(err => console.log(err));
                 this.newBusiness = "";
@@ -153,7 +153,7 @@
             },
             changeStatus: function(id, status){
                 axios
-                .put(`${baseUrl}/business/`+id,{status: status})
+                .put(`${this.baseUrl}/business/`+id,{status: status})
                 .then(res => this.fetchingData())
                 .catch(err => console.log(err));
             }
