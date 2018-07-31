@@ -3,9 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueCookie from 'vue-cookie'
+import Vuetify from 'vuetify'
+import BootstrapVue from 'bootstrap-vue'
 
 Vue.config.productionTip = false
 
+
+Vue.use(VueCookie);
+Vue.use(Vuetify);
+Vue.use(BootstrapVue);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
