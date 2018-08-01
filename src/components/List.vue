@@ -92,7 +92,7 @@
         name: 'ListPage',
         data () {
             return {
-                baseUrl: process.env.baseURL || "https://todo-list123456.herokuapp.com",
+                baseUrl: process.env.baseURL || "http://localhost:3000",
                 list: [],
                 showModal: false,
                 showModal_business: false,
